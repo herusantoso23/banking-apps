@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "41dadbf6-6ca3-438c-a527-c5fa8366df2c",
+		"name": "banking-application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "password",
+								"username": "adminapp"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "herusantoso008@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "welcome1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{server}}/oauth/token"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "dafd50a2-5ee5-4754-a6a7-407b195ac2e8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c409054c-10fe-4c17-974d-a4a289cda538",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"herusantoso008@gmail.com\",\n\t\"password\":\"welcome1\"\n}"
+						},
+						"url": "{{server}}/api/v1/user"
+					},
+					"response": []
+				},
+				{
+					"name": "change password user",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsibXMvYWRtaW4iLCJtcy91c2VyIiwibXcvYWRtaW5hcHAiXSwidXNlcl9uYW1lIjoiaGVydXNhbnRvc28yMyIsInNjb3BlIjpbIndyaXRlIiwicmVhZCJdLCJpZCI6ImhlcnVzYW50b3NvMDA4QGdtYWlsLmNvbSIsImV4cCI6MTU1MDk5NTA3NywiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjIyNDk0OTNjLTRjZDEtNGY4MC1iMTFiLTc3OTk2NjA0MmFlMyIsImNsaWVudF9pZCI6ImFkbWluYXBwIn0.P_t0WqHedVrJrEojvMU2uv6e1NoIwMLu8r4LMdTAMd6XaDcQmczF29Ccq2Y7PH7Hj85Y_9NvkFbir7M5r3n8b0j7j6rLsKY3gk5nQydTWMLNb1WLLnMRrIYSTvX1PYprcRr0tz5RRHMFPlhUQPWI17lx28166nx3pM2zBC7I5cfB5WhPFl5NaoykQ0s-mnWFp1-B2IgFA3yJ8cXsEmYq0esZ0rEY39RRLx2ECxEFxP1da7o32Fn1HafO-kdaz-TjHauNH2k-yyUqyHs1flPPWtzVbSxs8II32soTjBcX6J-fZJ5yCF2qLffWhR7dANbPZWUo7cXq2vGOmmeBlvbVfw",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"old_password\":\"welcome1\",\n\t\"new_password\":\"welcome1\",\n\t\"confirm_password\":\"welcome1\"\n}"
+						},
+						"url": "{{server}}/api/v1/user/change-password"
+					},
+					"response": []
+				},
+				{
+					"name": "get profile user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsibXMvYWRtaW4iLCJtcy91c2VyIiwibXcvYWRtaW5hcHAiXSwidXNlcl9uYW1lIjoiaGVydXNhbnRvc28wMDhAZ21haWwuY29tIiwic2NvcGUiOlsid3JpdGUiLCJyZWFkIl0sImV4cCI6MTU1MTAwMDA0MywiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6ImY5MzI5ZmYxLTFjMDgtNDhjMy1hNzkyLThiOGZjNTIxMGIyOSIsImVtYWlsIjoiaGVydXNhbnRvc28wMDhAZ21haWwuY29tIiwiY2xpZW50X2lkIjoiYWRtaW5hcHAifQ.DST1lZjuCfvyyGByrdvGFqfdLM5UkRkRmvWLLu35U6pMfZrRwOkmu_T7HAChZB9WruwUQfBvGNeEaq5EEAyB0NNhrj3jyfDC6mT7Z86X028uLxjn11XI5sWVYGw2IM-8FArP2Xg6aZo5vDwi_IItSesc3fl0EGX28xMXLhYE2nKX6oIA2BtFKN-2-iKuEBU0ZtkGNJsmaOCRGe0Wy0E3MyWB1cDTlQlnZaJH0D-vff6zgId7XRdE8rde8K4uvl7O0U6kdRMT8LIABSapDLK0ne01gETtGtpyPJerb2zp54fmiBZBRFqg1wOAtl-MkCFAQcwur9yXTzuBVxeBtLkJRg",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":\"\",\n\t\"fullname\":\"herusantoso23\",\n\t\"phoneNumber\":\"welcome1\",\n\t\"profile_image\":\"herusantoso008@gmail.com\"\n}"
+						},
+						"url": "{{server}}/api/v1/user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "deposit",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsibXMvYWRtaW4iLCJtcy91c2VyIiwibXcvYWRtaW5hcHAiXSwidXNlcl9uYW1lIjoiaGVydXNhbnRvc28wMDhAZ21haWwuY29tIiwic2NvcGUiOlsid3JpdGUiLCJyZWFkIl0sImV4cCI6MTU1MTAwMDA0MywiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6ImY5MzI5ZmYxLTFjMDgtNDhjMy1hNzkyLThiOGZjNTIxMGIyOSIsImVtYWlsIjoiaGVydXNhbnRvc28wMDhAZ21haWwuY29tIiwiY2xpZW50X2lkIjoiYWRtaW5hcHAifQ.DST1lZjuCfvyyGByrdvGFqfdLM5UkRkRmvWLLu35U6pMfZrRwOkmu_T7HAChZB9WruwUQfBvGNeEaq5EEAyB0NNhrj3jyfDC6mT7Z86X028uLxjn11XI5sWVYGw2IM-8FArP2Xg6aZo5vDwi_IItSesc3fl0EGX28xMXLhYE2nKX6oIA2BtFKN-2-iKuEBU0ZtkGNJsmaOCRGe0Wy0E3MyWB1cDTlQlnZaJH0D-vff6zgId7XRdE8rde8K4uvl7O0U6kdRMT8LIABSapDLK0ne01gETtGtpyPJerb2zp54fmiBZBRFqg1wOAtl-MkCFAQcwur9yXTzuBVxeBtLkJRg",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 200\n}"
+						},
+						"url": "{{server}}/api/v1/transaction/deposit"
+					},
+					"response": []
+				},
+				{
+					"name": "withdraw",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsibXMvYWRtaW4iLCJtcy91c2VyIiwibXcvYWRtaW5hcHAiXSwidXNlcl9uYW1lIjoiaGVydXNhbnRvc28wMDhAZ21haWwuY29tIiwic2NvcGUiOlsid3JpdGUiLCJyZWFkIl0sImV4cCI6MTU1MTAwMDA0MywiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6ImY5MzI5ZmYxLTFjMDgtNDhjMy1hNzkyLThiOGZjNTIxMGIyOSIsImVtYWlsIjoiaGVydXNhbnRvc28wMDhAZ21haWwuY29tIiwiY2xpZW50X2lkIjoiYWRtaW5hcHAifQ.DST1lZjuCfvyyGByrdvGFqfdLM5UkRkRmvWLLu35U6pMfZrRwOkmu_T7HAChZB9WruwUQfBvGNeEaq5EEAyB0NNhrj3jyfDC6mT7Z86X028uLxjn11XI5sWVYGw2IM-8FArP2Xg6aZo5vDwi_IItSesc3fl0EGX28xMXLhYE2nKX6oIA2BtFKN-2-iKuEBU0ZtkGNJsmaOCRGe0Wy0E3MyWB1cDTlQlnZaJH0D-vff6zgId7XRdE8rde8K4uvl7O0U6kdRMT8LIABSapDLK0ne01gETtGtpyPJerb2zp54fmiBZBRFqg1wOAtl-MkCFAQcwur9yXTzuBVxeBtLkJRg",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 21\n}"
+						},
+						"url": "{{server}}/api/v1/transaction/withdraw"
+					},
+					"response": []
+				},
+				{
+					"name": "get history transaction",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsibXMvYWRtaW4iLCJtcy91c2VyIiwibXcvYWRtaW5hcHAiXSwidXNlcl9uYW1lIjoiaGVydXNhbnRvc28wMDhAZ21haWwuY29tIiwic2NvcGUiOlsid3JpdGUiLCJyZWFkIl0sImV4cCI6MTU1MTAwMDA0MywiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6ImY5MzI5ZmYxLTFjMDgtNDhjMy1hNzkyLThiOGZjNTIxMGIyOSIsImVtYWlsIjoiaGVydXNhbnRvc28wMDhAZ21haWwuY29tIiwiY2xpZW50X2lkIjoiYWRtaW5hcHAifQ.DST1lZjuCfvyyGByrdvGFqfdLM5UkRkRmvWLLu35U6pMfZrRwOkmu_T7HAChZB9WruwUQfBvGNeEaq5EEAyB0NNhrj3jyfDC6mT7Z86X028uLxjn11XI5sWVYGw2IM-8FArP2Xg6aZo5vDwi_IItSesc3fl0EGX28xMXLhYE2nKX6oIA2BtFKN-2-iKuEBU0ZtkGNJsmaOCRGe0Wy0E3MyWB1cDTlQlnZaJH0D-vff6zgId7XRdE8rde8K4uvl7O0U6kdRMT8LIABSapDLK0ne01gETtGtpyPJerb2zp54fmiBZBRFqg1wOAtl-MkCFAQcwur9yXTzuBVxeBtLkJRg",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{server}}/api/v1/transaction"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
