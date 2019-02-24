@@ -28,12 +28,12 @@ mvn spring-boot:run
 2. access this link <b><i>localhost:8080/swagger-ui.html</i></b>
 
 ## How to get token
-Before you can get token, you must create user with the API that was created, exampe my user email is <i>herusantoso008@gmail.com</i> and the password is <i>welcome1</i>. To get a JWT token execute the following command: </br>
+Before you can get token, you must create user with the API that was created, example my user email is <i>herusantoso008@gmail.com</i> and the password is <i>welcome1</i>. To get a JWT token execute the following command: </br>
 
 ```
 curl adminapp:password@localhost:8080/oauth/token -d grant_type=password -d username=herusantoso008@gmail.com -d password=welcome1
 ```
-and you can get the response like this
+and you will get the response like this
 
 ```
 {
