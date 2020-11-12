@@ -1,6 +1,5 @@
 # Simple REST Api for Banking Apps
 
-
 ## Technology Used
 1. Spring Boot 2.0
 2. Oauth2 JWT (Security)
