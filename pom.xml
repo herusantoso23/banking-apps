@@ -6,6 +6,7 @@
 	<groupId>com.herusantoso.bankingapps</groupId>
 	<artifactId>banking-apps</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<name>banking-apps</name>
 	<description>Back-end REST API for a banking application</description>
