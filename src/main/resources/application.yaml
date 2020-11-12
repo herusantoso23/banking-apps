@@ -19,7 +19,7 @@ spring:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/banking-apps
     username: postgres
-    password: mysecretpassword
+    password: password
   properties:
     hibernate:
       dialect: org.hibernate.dialect.PostgreSQLDialect
